@@ -1,0 +1,48 @@
+package com.fickinger.arnaud.inreal.fragment;
+
+
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.fickinger.arnaud.inreal.R;
+
+/**
+ * A simple {@link Fragment} subclass.
+ */
+public class ConnectedFragment extends Fragment {
+
+    private TextView usernameTextView;
+    private String username;
+
+
+    public ConnectedFragment() {
+        // Required empty public constructor
+    }
+
+    public static ConnectedFragment newInstance(String username){
+        ConnectedFragment fragment = new ConnectedFragment();
+        fragment.username = username;
+        return fragment;
+    }
+
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_connected, container, false);
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+        usernameTextView = view.findViewById(R.id.username);
+        usernameTextView.setText(username);
+    }
+}
