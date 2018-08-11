@@ -4,20 +4,28 @@ package com.fickinger.arnaud.inreal.fragment;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.fickinger.arnaud.inreal.R;
+import com.fickinger.arnaud.inreal.adapter.ViewPagerAdapter;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ConnectedFragment extends Fragment {
 
-    private TextView usernameTextView;
+    private ViewPager viewPager;
+    private TabLayout tabLayout;
+
+    private ViewPagerAdapter viewPagerAdapter;
+
     private String username;
 
 
@@ -31,6 +39,11 @@ public class ConnectedFragment extends Fragment {
         return fragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewPagerAdapter = new ViewPagerAdapter(getChildFragmentManager());
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,7 +55,15 @@ public class ConnectedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        usernameTextView = view.findViewById(R.id.username);
-        usernameTextView.setText(username);
+        viewPager = view.findViewById(R.id.view_pager);
+        tabLayout = view.findViewById(R.id.tab_layout);
+
+        viewPagerAdapter.add(ProfileFragment.newInstance(username), "Profile");
+        viewPagerAdapter.add(new DiscoverFragment(), "Discover");
+        viewPagerAdapter.add(new ChatFragment(), "Chat");
+
+        viewPager.setAdapter(viewPagerAdapter);
+
+        tabLayout.setupWithViewPager(viewPager);
     }
 }
