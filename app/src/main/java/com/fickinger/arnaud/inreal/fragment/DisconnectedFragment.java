@@ -57,7 +57,7 @@ public class DisconnectedFragment extends Fragment {
 
         loginButton = view.findViewById(R.id.login_button);
 
-        loginButton.setReadPermissions("email");
+        loginButton.setReadPermissions("email", "user_photos");
         // If using in a fragment
         loginButton.setFragment(this);
 

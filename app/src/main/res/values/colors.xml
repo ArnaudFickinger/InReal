@@ -1,6 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <color name="colorPrimary">#FF303030</color>
+    <color name="colorPrimaryDark">#0046a1</color>
+    <color name="colorAccent">#c8a5fffd</color>
+    <color name="colorAccentDark">#c86ffcfb</color>
+    <color name="colorHoloPurple">#ffaa66cc</color>
+    <color name="colorPrimaryOpaque">#822081ff</color>
+
+    <color name="white">#FFF</color>
+    <color name="green">#c8287c28</color>
+    <color name="red">#c8dc3131</color>
+    <color name="grey">#eee</color>
+    <color name="dark_grey">#434343</color>
+    <color name="light_grey">#9e8b8b8b</color>
+    <color name="grey_transparent">#a9bfbfbf</color>
+    <color name="white_transparent">#99ffffff</color>
+    <color name="transparent">#00ffffff</color>
+    <color name="black">#000000</color>
+    <color name="black_opaque">#e1000000</color>
+    <color name="dark_opaque">#9e000000</color>
+    <color name="grey_opaque">#64000000</color>
+    <color name="light_grey_opaque">#644d4d4d</color>
+    <color name="blue_grey_500">#607D8B</color>
+
+
+    <!--<color name="colorPrimary">#1976D2</color>-->
+    <!--<color name="colorPrimaryDark">#1565C0</color>-->
+    <color name="colorAccentLight">#ffd964</color>
+    <color name="colorAccentOpaque">#beffca28</color>
+    <color name="colorAccentOpaque2">#64ffca28</color>
+
+    <color name="blue_grey_100">#CFD8DC</color>
+    <color name="blue_grey_200">#B0BEC5</color>
+    <color name="blue_grey_300">#90A4AE</color>
+    <color name="blue_grey_400">#78909C</color>
+    <color name="blue_grey_600">#546E7A</color>
+    <color name="blue_grey_700">#455A64</color>
+    <color name="blue_grey_800">#37474F</color>
+    <color name="blue_grey_900">#263238</color>
+
+    <color name="grey_100">#f5f5f5</color>
+    <color name="grey_100_opaque">#aff5f5f5</color>
+    <color name="grey_200_opaque">#afb1b1b1</color>
+    <color name="grey_300_opaque">#af6e6e6e</color>
+    <color name="black_overlay_100">#aa000000</color>
+    <color name="black_overlay_200">#c8000000</color>
+    <color name="user_detail_separator">#3a3a3a</color>
+
+    <color name="bright_red">#ff0400</color>
+    <color name="holographic_translucent">#80ffffff</color>
 </resources>

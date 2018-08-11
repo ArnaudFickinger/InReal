@@ -13,6 +13,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.facebook.AccessToken;
+import com.facebook.Profile;
 import com.fickinger.arnaud.inreal.R;
 import com.fickinger.arnaud.inreal.adapter.ViewPagerAdapter;
 
@@ -20,6 +22,11 @@ import com.fickinger.arnaud.inreal.adapter.ViewPagerAdapter;
  * A simple {@link Fragment} subclass.
  */
 public class ConnectedFragment extends Fragment {
+
+    private final String TAG = "ConnectedFragment";
+
+    private Profile mProfile;
+    private AccessToken mAccessToken;
 
     private ViewPager viewPager;
     private TabLayout tabLayout;
@@ -33,9 +40,10 @@ public class ConnectedFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static ConnectedFragment newInstance(String username){
+    public static ConnectedFragment newInstance(Profile profile, AccessToken accessToken){
         ConnectedFragment fragment = new ConnectedFragment();
-        fragment.username = username;
+        fragment.mProfile = profile;
+        fragment.mAccessToken = accessToken;
         return fragment;
     }
 
@@ -58,7 +66,7 @@ public class ConnectedFragment extends Fragment {
         viewPager = view.findViewById(R.id.view_pager);
         tabLayout = view.findViewById(R.id.tab_layout);
 
-        viewPagerAdapter.add(ProfileFragment.newInstance(username), "Profile");
+        viewPagerAdapter.add(ProfileFragment.newInstance(mProfile, mAccessToken), "Profile");
         viewPagerAdapter.add(new DiscoverFragment(), "Discover");
         viewPagerAdapter.add(new ChatFragment(), "Chat");
 

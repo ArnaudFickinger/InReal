@@ -4,12 +4,15 @@ import android.content.Intent;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
@@ -18,7 +21,11 @@ import com.fickinger.arnaud.inreal.R;
 import com.fickinger.arnaud.inreal.fragment.ConnectedFragment;
 import com.fickinger.arnaud.inreal.fragment.DisconnectedFragment;
 
+import org.json.JSONObject;
+
 public class ConnectActivity extends AppCompatActivity implements DisconnectedFragment.DisconnectedFragmentListener{
+
+    private final String TAG = "ConnectActivity";
 
     private boolean isLoggedIn;
     private Profile profile;
@@ -50,7 +57,7 @@ public class ConnectActivity extends AppCompatActivity implements DisconnectedFr
                 @Override
                 protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
                     profile = currentProfile;
-                    openConnectedFragment(profile.getName());
+                    openConnectedFragment();
                     mProfileTracker.stopTracking();
                 }
             };
@@ -59,8 +66,9 @@ public class ConnectActivity extends AppCompatActivity implements DisconnectedFr
         }
         else {
             profile = Profile.getCurrentProfile();
-            openConnectedFragment(profile.getName());
+            openConnectedFragment();
         }
+
 
     }
 
@@ -73,9 +81,9 @@ public class ConnectActivity extends AppCompatActivity implements DisconnectedFr
         fragmentTransaction.commit();
     }
 
-    private void openConnectedFragment(String profileName) {
+    private void openConnectedFragment() {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        ConnectedFragment connectedFragment = ConnectedFragment.newInstance(profileName);
+        ConnectedFragment connectedFragment = ConnectedFragment.newInstance(profile, accessToken);
         connectedFragment.setRetainInstance(true);
         fragmentTransaction.replace(R.id.fragment_container, connectedFragment, "connectedFragment");
         fragmentTransaction.setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN);
